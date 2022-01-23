@@ -1,6 +1,7 @@
 import numpy as np
 import logging
 from tqdm import tqdm
+import logging
 
 class Perceptron:
   def __init__(self, eta, epochs):

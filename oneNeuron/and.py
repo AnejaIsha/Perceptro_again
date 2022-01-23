@@ -1,8 +1,21 @@
 from utils.model import Perceptron
 from utils.all_utils import prepare_data,save_model,save_plot
 import pandas as pd
+import logging
+
+logging_str = "[%(asctime)s:%(levelname)s:%(module)s] %(message)s"
+logging.basicConfig(level = logging.INFO,format = logging_str)
 
 def main(data,modelName,plotName,eta,epochs):
+    """[summary]
+
+    Args:
+        data ([type]): [description]
+        modelName ([type]): [description]
+        plotName ([type]): [description]
+        eta ([type]): [description]
+        epochs ([type]): [description]
+    """
 
     df = pd.DataFrame(data)
     print(df)
