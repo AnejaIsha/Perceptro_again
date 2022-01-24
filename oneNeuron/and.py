@@ -2,9 +2,13 @@ from utils.model import Perceptron
 from utils.all_utils import prepare_data,save_model,save_plot
 import pandas as pd
 import logging
+import os
 
+log_dir = "logs"
+os.makedirs(log_dir,exist_ok = True)
 logging_str = "[%(asctime)s:%(levelname)s:%(module)s] %(message)s"
-logging.basicConfig(level = logging.INFO,format = logging_str)
+logging.basicConfig(filename = os.path.join(log_dir,'logfile'),level = logging.INFO,format = logging_str,filemode ='a')
+
 
 def main(data,modelName,plotName,eta,epochs):
     """[summary]
@@ -34,4 +38,10 @@ OR = {
 }
 ETA = 0.3 # 0 and 1
 EPOCHS = 10
-main(data=OR, modelName="or.model", plotName="or.png", eta=ETA, epochs=EPOCHS)
+
+try :
+    main(data=OR, modelName="or.model", plotName="or.png", eta=ETA, epochs=EPOCHS)
+except Exception as e:
+    logging.info(e)
+    print(e)
+
